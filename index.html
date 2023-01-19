@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>macOs basic calculator</title>
+    <link 
+    rel="stylesheet" 
+    href="/dist/output.css">
+    <style>
+#Test
+{
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap; 
+}
+    </style>
+</head>
+<body class="bg-black h-[700px] flex justify-center items-center ">
+    <div class="grid grid-cols-4 w-[232px]   border-[rgb(109,109,109)] border-[0.8px] rounded-xl">
+        <!-- buttons -->
+        <div class=" rounded-t-xl col-span-4 flex py-[7px] pl-1 group h-[19px]  bg-[rgb(39,39,38)]">
+            
+            <button class=" cursor-default select-none flex items-center justify-center rounded-full h-[12px] w-[12px] ml-1 bg-[rgb(255,95,87)] active:bg-[rgb(255,141,133)]  font-bold text-opacity-0 text-[10px] text-red-900 hover:text-opacity-100 group-hover:text-opacity-100">
+                <span class="mb-[1px]">×</span>
+            </button>
+            <button class=" cursor-default select-none flex items-center justify-center rounded-full  h-[12px] w-[12px] bg-[rgb(255,188,46)] active:bg-[rgb(255,233,92)] mx-2 font-bold text-[10px] text-opacity-0 hover:text-opacity-100 text-amber-900 group-hover:text-opacity-100">
+                <span class="mb-[1px]">-</span>
+            </button>
+            <button class="  cursor-default select-none flex items-center justify-center rounded-full h-[12px] w-[12px]  bg-[rgb(43,200,64)] active:bg-[rgb(86,244,110)] font-bold text-[10px] text-opacity-0 hover:text-opacity-100 text-green-900 group-hover:text-opacity-100">
+                <span class="mb-[1px]">+</span>
+            </button>
+        
+        </div>
+        <!-- 1     rgb(38,37,36)-->
+        
+        
+        <div data-current-operand class="current-operand col-span-4 bg-[rgb(39,39,38)] text-[rgb(233,233,233)] text-[47px] h-[62px] font-[150] text-right pr-[14px] flex justify-end items-center">0
+            <div data-previous-operand class="previous-operand col-span-4"></div>
+        </div>
+ 
+
+
+        <!-- 2  rgb(59,58,57)   rgb(255,158,11)-->
+        <div data-all-clear class="bg-[rgb(62,61,60)] active:bg-[rgb(92,92,91)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-r-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-lg font-light  flex justify-center items-center">AC</div>
+        <div data-plus-minus class="bg-[rgb(62,61,60)] active:bg-[rgb(92,92,91)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-sm flex justify-center items-center"><span class="text-[11px] font-bold mb-[6px]">+</span><span class=" rotate-[23deg] text-base">/</span> <span class="text-[13px] mt-[6px] font-semibold">-</span></div>
+        <div data-operation class="bg-[rgb(62,61,60)] active:bg-[rgb(92,92,91)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-lg font-normal flex justify-center items-center">%</div>
+        <div data-operation class="bg-[rgb(255,158,11)] active:bg-[rgb(203,125,4)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-l-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-2xl flex justify-center items-center">÷</div>
+        
+        <!-- 3 rgb(92,92,92) -->
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-r-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none  text-[22px] flex justify-center items-center">7</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none  text-[22px] flex justify-center items-center">8</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none  text-[22px] flex justify-center items-center">9</div>
+        <div data-operation class="bg-[rgb(255,158,11)] active:bg-[rgb(203,125,4)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-l-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none  text-2xl flex justify-center items-center">×</div>
+    
+        <!-- 4 -->
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-r-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">4</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">5</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">6</div>
+        <div data-operation class="bg-[rgb(255,158,11)] active:bg-[rgb(203,125,4)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-l-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-2xl flex justify-center items-center">–</div>
+    
+        <!-- 5 -->
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-r-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">1</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">2</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">3</div>
+        <div data-operation class="bg-[rgb(255,158,11)] active:bg-[rgb(203,125,4)] h-12 border-[rgb(40,40,39)] border-t-[0.1px] border-l-[0.1px] border-b-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-2xl flex justify-center items-center">+</div>
+
+        <!-- 6 -->
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] rounded-bl-xl border-t-[0.1px] border-r-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center col-span-2 items-center">0</div>
+        <div data-number class="bg-[rgb(94,94,92)] active:bg-[rgb(160,159,157)] h-12 border-[rgb(40,40,39)] border-l-[0.1px] border-t-[0.1px] border-r-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-2xl font-light flex justify-center items-center">,</div>
+        <div data-equals class="bg-[rgb(255,158,11)] active:bg-[rgb(203,125,4)] h-12 border-[rgb(40,40,39)] rounded-br-xl border-t-[0.1px] border-l-[0.1px] p-2 text-[rgb(225,225,225)] cursor-default select-none text-[22px] flex justify-center items-center">=</div>
+    
+    
+    </div>
+    <div 
+    id="Test">
+    </div>
+    <script src="functionality.js"></script>
+</body>
+</html>
